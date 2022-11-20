@@ -1,0 +1,68 @@
+/* Copyright (C) 2022 Shatrujit Kumar, All Rights Reserved */
+
+/* Common styling for both header and footer */
+.header-footer-bar {
+    background-color:black;
+    color:white;
+    width: 100vw;
+    max-width: 100%;
+    height: 2vh;
+    display: flex;
+    align-items: center;
+    position:fixed;
+    text-align: center;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+}
+
+/* Offset for floating header */
+header {
+    top: 0;
+}
+
+/* Offset for floating footer */
+footer {
+    bottom: 0;
+}
+
+/* Remove default margins on paragraphs, it's being handled by the container */
+p {
+    margin: 0;
+}
+
+/* Container element for header buttons, set to fit all three in one line */
+.header-button-container {
+    width:24vw;
+    display: inline-block;
+}
+/* Container element for header buttons, set to fit all three in one line */
+.footer-button-container {
+    width:32vw;
+    display: inline-block;
+}
+
+/* Header buttons */
+.button-box {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    border-radius: none;
+    padding: 1vh 1vw;
+    font-family: 'Orbitron';
+}
+
+/* Horizontal and vertical centre alignment */
+.center-vertical {
+    vertical-align: middle;
+}
+.center-horizontal {
+    text-align: center;
+}
+
+/* Padding so that body content isn't covered by the floating header/footer */
+.padded-top {
+    padding-top:15vh;
+}
+.padded-bottom {
+    padding-bottom: 15vh;
+}

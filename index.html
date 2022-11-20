@@ -1,0 +1,263 @@
+<!-- Copyright (C) 2022 Shatrujit Kumar, All Rights Reserved -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <!-- Custom Favicon to match our Flag/Marker -->
+        <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
+
+        <!-- Custom style sheets -->
+        <!-- Common 'base' style sheet -->
+        <link rel="stylesheet" type="text/css" href="css/style-base.css"/>
+        <!-- Custom sheet for this app -->
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        
+        <!-- Buzz for managing audio -->
+        <script src="./scripts/buzz.min.js"></script>
+        
+        <!-- Game Title -->
+        <title>Mousesweeper</title>
+    </head>
+
+    <!-- Body had predefined 8px margin which was causing whitespace to pop up around the header/footer-->
+    <!-- Overwrote predefined margins and set width to screen width -->
+    <body>
+
+        <!-- Header that covers the width of the screen and takes up ~10% of screen height -->
+        <!-- Reused header from bio assignment, made it floating so the buttons are always accessible -->
+        <header class="header-footer-bar">
+
+            <!-- Toggle Controls section -->
+            <div class="header-button-container">
+                <span class="button-box" id="controls-button">Controls</span>
+            </div>
+
+            <!-- Toggle Select Difficulty section -->
+            <div class="header-button-container">
+                <span class="button-box" id="difficulty-button">Difficulty</span>
+            </div>
+
+            <!-- Toggle Play section -->
+            <div class="header-button-container">
+                <span class="button-box" id="play-button">Play</span>
+            </div>
+
+            <!-- Volume control -->
+            <div class="header-button-container">
+                <span class="button-box">
+                    <!-- Volume Icon -->
+                    <img src="./assets/images/volume-down.svg" class="center-vertical" id="volume-icon"/>
+                    <!-- Input to control volume level -->
+                    <input type="range" value="20" min="0" max="100" class="center-vertical" id="volume-control"/>
+                </span>
+            </div>
+        </header>
+
+        <!-- Main content here - offset with top margin to account for floating header -->
+        <main class="padded-top">
+            <div class="center-horizontal">
+                <h1>Mousesweeper</h1>
+            </div>
+
+            <!-- Padding on every section to ensure that no sections content gets hidden by floating footer when any number of other 
+            sections are collapsed/hidden -->
+            <!-- Controls section starts here -->
+            <section class="padded-bottom" id="controls-screen">
+
+                <div class="center-horizontal">
+                    <h3>Controls</h3>
+                </div>
+
+                <!-- Div containing game setting, rules explanation, with gameplay examples -->
+                <div class="controls-dialogue">
+
+                    <p>Who do you call when you know there are cats hiding in plain sight? The Mousesweeper! Scout 
+                        the area and mark the cats' locations so the mice can sneak around them. Be careful though! If you stumble
+                        on a cat, it's game over!
+                    </p>
+
+                    <br/>
+
+                    <p>
+                        <strong>Left Click</strong> on a tile to reveal it. The number in the tile is the number of cats in the surrounding 
+                        eight tiles.
+                    </p>
+                    <br/>
+
+                    <div class="gameplay-example open-tile number-1">1</div>
+                    <div class="gameplay-example open-tile number-2">2</div>
+                    <div class="gameplay-example open-tile number-3">3</div>
+                    <div class="gameplay-example open-tile number-4">4</div>
+                    <div class="gameplay-example open-tile number-5">5</div>
+                    <div class="gameplay-example open-tile number-6">6</div>
+                    <div class="gameplay-example open-tile number-7">7</div>
+                    <div class="gameplay-example open-tile number-8">8</div>
+
+                    <br/>
+
+                    <p>
+                        If there are no cats in the surrounding tiles, it will be blank and will open all eight tiles around it.
+                    </p>
+                    <br/>
+
+                    <div style="display: table-row;">
+                        <div class="gameplay-example open-tile number-1">1</div>
+                        <div class="gameplay-example open-tile number-1">1</div>
+                        <div class="gameplay-example open-tile number-1">1</div>
+                    </div>
+
+                    <div style="display: table-row;">
+                        <div class="gameplay-example open-tile number-1">1</div>
+                        <div class="gameplay-example open-tile"></div>
+                        <div class="gameplay-example open-tile number-1">1</div>
+                    </div>
+
+                    <div style="display: table-row;">
+                        <div class="gameplay-example open-tile number-1">1</div>
+                        <div class="gameplay-example open-tile number-1">1</div>
+                        <div class="gameplay-example open-tile number-1">1</div>
+                    </div>
+
+                    <br/>
+
+                    <p>
+                        <strong>Right Click</strong> on a tile to mark it, if you think it might be a cat. Marked tiles can't be clicked, 
+                        and won't automatically open if a neighbouring tile is double-clicked.
+                    </p>
+                    <br/>
+
+                    <div class="gameplay-example mark"></div>
+
+                    <br/>
+
+                    <p>
+                        <strong>Double Click</strong> on an open tile to open all surrounding tiles. This will only work if you've marked a 
+                        number of surrounding tiles equal to the number on the current tile. Be careful! You can run into cats if you've 
+                        marked tiles incorrectly.
+                    </p>
+                    <br/>
+
+                    <div style="display: table-row;">
+                        <div class="gameplay-example open-tile number-1">1</div>
+                        <div class="gameplay-example mark"></div>
+                        <div class="gameplay-example open-tile number-1">1</div>
+                    </div>
+
+                    <div style="display: table-row;">
+                        <div class="gameplay-example open-tile number-2">2</div>
+                        <div class="gameplay-example open-tile number-2">2</div>
+                        <div class="gameplay-example open-tile number-2">2</div>
+                    </div>
+
+                    <div style="display: table-row;">
+                        <div class="gameplay-example open-tile number-1">1</div>
+                        <div class="gameplay-example mark"></div>
+                        <div class="gameplay-example open-tile number-1">1</div>
+                    </div>
+
+                    <br/>
+
+                    <p>
+                        Don't click on the cats! If you do, you die! If it happens, you'll get to see whether any of your marks were placed 
+                        incorrectly and all the other cats' locations.
+                    </p>
+                    <br/>
+
+                    <div class="gameplay-example cat cat-clicked"></div>
+
+                    <div class="gameplay-example bad-mark"></div>
+
+                    <div class="gameplay-example cat"></div>
+
+                    <br/>
+                    <p>
+                        Good Luck! Don't let the cat get your tongue (or the rest of you)!
+                    </p>
+                </div>
+            </section>
+            <!-- Controls section ends here-->
+
+            <!-- Difficulty section starts here -->
+            <section class="padded-bottom hide" id="difficulty-screen">
+                
+                <div class="center-horizontal">
+                    <h3>Select Difficulty</h3>
+                </div>
+
+                <!-- Buttons generate and navigate to corresponding game boards, 
+                    Custom enables when all three params are filled in -->
+                <div class="difficulty-setting-container">
+                    <button class="body-button" id="easy-button">Easy (9x9, 10 Cats)</button>
+                </div>
+
+                <div class="difficulty-setting-container">
+                    <button class="body-button" id="medium-button">Medium (16x16, 40 Cats)</button>
+                </div>
+
+                <div class="difficulty-setting-container">
+                    <button class="body-button" id="hard-button">Hard (16x30, 99 Cats)</button>
+                </div>
+
+                <div class="difficulty-setting-container">
+
+                    <button class="body-button" id="custom-button" disabled>Custom</button>
+
+                    <div class="input-container">
+                        <input id="custom-height" type="number" pattern="[0-9]{10}" class="custom-difficulty-value" placeholder="Height"/>
+                        <input id="custom-width" type="number" class="custom-difficulty-value" placeholder="Width"/>
+                        <input id="custom-cats" type="number" class="custom-difficulty-value" placeholder="Cats"/>
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- Difficulty section ends -->
+
+            <!-- Game board display starts here -->
+            <section class="game-section hide" id="play-screen">
+                
+                <div class="center-horizontal">
+                    <h3>Play</h3>
+                </div>
+
+                <!-- Button to reset game state -->
+                <div>
+                    <button class="body-button" id="reset-button">Reset Game</button>
+                </div>
+
+                <!-- Board gets generated programmatically and attached here -->
+                <table id="game-board">
+                </table>
+
+            </section>
+        </main>
+
+        <!-- Footer covers width of the screen and takes up ~10% of screen height, just like the header -->
+        <!-- Reused footer from bio assignment, so player can track time/cats remaining when scrolling around (in case game board 
+            doesn't completely fit on screen on hard/custom difficulty)-->
+        <footer class="header-footer-bar">
+
+            <div class="footer-button-container">
+                <span class="button-box">
+                    Cats remaining: <span id="cat-number"></span>
+                </span>
+            </div>
+
+            <div class="footer-button-container">
+                <span class="button-box">
+                    Time: <span id="time">0s</span>
+                </span>
+            </div>
+
+            <div class="footer-button-container">
+                <span class="button-box">
+                    Highscore: <span id="hi-score">-</span>
+                </span>
+            </div>
+
+        </footer>
+    </body>
+
+    <!-- Loading our App scripts here -->
+    <script src="scripts/index.js" type="module"></script>
+</html>
