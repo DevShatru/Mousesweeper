@@ -1,4 +1,4 @@
-###**PG22 T1 Intro to HTML - A3: HTML5 Game App**
+### **PG22 T1 Intro to HTML - A3: HTML5 Game App**
 Submitted by: Shatrujit Aditya Kumar
 Date: 17th February, 2022
 Version: 1.0
@@ -8,11 +8,11 @@ Images made in paint
 Sounds are free assets from mixkit.co
 Icons from Google's Material Icon library
 
-####**Download/Install**
+#### **Download/Install**
 ---------
  - Clone "https://github.com/pg22shatrujit/minesweeper.git" (Branch - Main)
 
-####**How to use**
+#### **How to use**
 --------
  - Navigate to repository and start live-server.
  - live-server should launch index.html.
